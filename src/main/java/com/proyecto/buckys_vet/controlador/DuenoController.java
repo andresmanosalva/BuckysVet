@@ -28,8 +28,8 @@ public class DuenoController {
 
     // Método para mostrar la información de un dueño por cédula
     @GetMapping("/infoDuenos/{cedula}")
-    public String verDueno(@PathVariable String cedula, Model model) {
-        Dueno dueno = duenoServicio.obtenerPorCedula(cedula);
+    public String verDueno(@PathVariable Long id, Model model) {
+        Dueno dueno = duenoServicio.obtenerPorCedula(id);
         if (dueno != null) {
             model.addAttribute("dueno", dueno);
             return "detallesDueno"; // Vista detallesDueno.html
@@ -56,14 +56,14 @@ public class DuenoController {
 
     // Método para eliminar un dueño por cédula
     @GetMapping("/eliminardueno/{cedula}")
-    public String eliminarDueno(@PathVariable String cedula) {
-        duenoServicio.eliminar(cedula);
+    public String eliminarDueno(@PathVariable Long id) {
+        duenoServicio.eliminar(id);
         return "redirect:/duenos";
     }
 
     @GetMapping("/modificardueno/{cedula}")
-    public String modificarDueno(@PathVariable ("cedula") String cedula, Model model) {
-        model.addAttribute("dueno", duenoServicio.obtenerPorCedula(cedula));
+    public String modificarDueno(@PathVariable ("cedula") Long id, Model model) {
+        model.addAttribute("dueno", duenoServicio.obtenerPorCedula(id));
         return "modificardueno";
     }
 

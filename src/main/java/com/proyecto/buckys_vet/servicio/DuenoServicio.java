@@ -16,26 +16,26 @@ public class DuenoServicio {
 
     // Método para obtener todos los dueños
     public Collection<Dueno> obtenerTodos() {
-        return duenoRepositorio.obtenerTodos();
+        return duenoRepositorio.findAll();
     }
 
     // Método para obtener un dueño por cédula
-    public Dueno obtenerPorCedula(String cedula) {
-        return duenoRepositorio.obtenerPorCedula(cedula);
+    public Dueno obtenerPorCedula(Long id) {
+        return duenoRepositorio.findById(id).get();
     }
 
     // Método para guardar o actualizar un dueño
     public void guardar(Dueno dueno) {
-        duenoRepositorio.agregar(dueno);
+        duenoRepositorio.save(dueno);
     }
 
     // Método para eliminar un dueño por cédula
-    public void eliminar(String cedula) {
-        duenoRepositorio.eliminar(cedula);
+    public void eliminar(Long id) {
+        duenoRepositorio.deleteById(id);
     }
 
      public void update (Dueno dueno) {
-        duenoRepositorio.modificar(dueno);
+        duenoRepositorio.save(dueno);
     }    
 
 }

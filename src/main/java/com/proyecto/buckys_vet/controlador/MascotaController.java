@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import java.util.Map;
 import com.proyecto.buckys_vet.entidad.Dueno;
 import com.proyecto.buckys_vet.entidad.Mascota;
 import com.proyecto.buckys_vet.servicio.MascotaServicio;
@@ -58,7 +57,7 @@ public class MascotaController {
 
     @GetMapping("/crearmascota")
     public String crearMascota(Model model, Dueno dueno) {
-        Mascota mascota = new Mascota(0L, "", "", 0, 0.0, "", "", dueno.getCedula());
+        Mascota mascota = new Mascota( "", "", 0, 0.0, "", "", "");
         model.addAttribute("mascota", mascota);
         return "crearMascota";
     }
@@ -66,7 +65,7 @@ public class MascotaController {
     @PostMapping("/agregar")
     public String agregarMascota(@ModelAttribute("mascota") Mascota mascota) {
         mascotaServicio.guardar(mascota);
-        return "redirect:/infoMascota/" + mascota.getId();
+        return "redirect:/infoMascota/" + mascota.getMascotaId();
     }
 
     @GetMapping("/eliminarmascota/{id}")
@@ -83,27 +82,23 @@ public class MascotaController {
 
     @PostMapping("modificarmascota/{id}")
     public String updateMascota(@PathVariable("id") Long id, @ModelAttribute("mascota") Mascota mascota) {
-        Mascota mascotaExistente = mascotaServicio.obtenerPorId(mascota.getId());
-    
-    // Mantener valores que no se deben perder (si hay algún dato que no se edita en el formulario)
-        mascota.setDuenoCedula(mascotaExistente.getDuenoCedula());
-
+        Mascota mascotaExistente = mascotaServicio.obtenerPorId(mascota.getMascotaId());
     // Actualizar la mascota
         mascotaServicio.update(mascota);
     
         return "redirect:/mascotas";
     }
 
-    @GetMapping("/mascotas/{cedula}")
+   /* @GetMapping("/mascotas/{cedula}")
 public String listarMascotasPorDueno(@PathVariable String cedula, Model model) {
     // Obtener las mascotas en un Map
-    Map<String, Mascota> mascotas = mascotaServicio.obtenerPorDueno(cedula);
+    //Map<String, Mascota> mascotas = mascotaServicio.obtenerPorDueno(cedula);
 
-    model.addAttribute("mascotas", mascotas);
+    model.addAttribute("mascotas", mascotaServicio);
     model.addAttribute("cedulaDueno", cedula);
 
     return "infoMascotas"; // Vista donde se mostrarán solo sus mascotas
 }
-
+*/
     
 }

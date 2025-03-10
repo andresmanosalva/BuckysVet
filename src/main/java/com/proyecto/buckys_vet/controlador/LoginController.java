@@ -25,27 +25,22 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping("/login")
-    public String procesarLogin(Model model) {
-        return "redirect:/mascotas";
-    }
-
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/login";
     }
+    
     @PostMapping("/login")
-public String login(@RequestParam String cedula, Model model) {
-    Dueno dueno = duenoServicio.obtenerPorCedula(cedula);
+    public String login(@RequestParam String cedula, Model model) {
+        Dueno dueno = duenoServicio.obtenerPorCedula(cedula);
 
-    if (dueno != null) {
-        return "redirect:/mascotas/" + cedula; // Redirige a la vista con sus mascotas
-    } else {
-        model.addAttribute("error", "Cédula incorrecta o usuario no encontrado.");
-        return "login";
+        if (dueno != null) {
+            return "redirect:/mascotas/" + cedula; // Redirige a la vista con sus mascotas
+        } else {
+            model.addAttribute("error", "Cédula incorrecta o usuario no encontrado.");
+            return "login";
+        }
     }
-}
-
 }
 

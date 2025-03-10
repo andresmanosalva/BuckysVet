@@ -1,9 +1,6 @@
 package com.proyecto.buckys_vet.servicio;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,30 +15,25 @@ public class MascotaServicio {
 
     // Obtener todas las mascotas
     public Collection<Mascota> obtenerTodas() {
-        return mascotaRepositorio.obtenerTodas();
+        return mascotaRepositorio.findAll();
     }
-
-    public Mascota obtenerPorNombre(String nombre) {
-        return mascotaRepositorio.obtenerPorNombre(nombre);
-    }
-
     public void guardar(Mascota mascota) {
-        mascotaRepositorio.agregar(mascota);
+        mascotaRepositorio.save(mascota);
     }
 
 
     public void update (Mascota mascota) {
-        mascotaRepositorio.modificar(mascota);
+        mascotaRepositorio.save (mascota);
     }    
 
     public void eliminar(Long id) {
-        mascotaRepositorio.eliminar(id);
+        mascotaRepositorio.deleteById(id);
     }
    
     public Mascota obtenerPorId(Long id) {
-        return mascotaRepositorio.obtenerPorId(id);
+        return mascotaRepositorio.findById(id).get();
     }
-
+/*
     public Map<String, Mascota> obtenerPorDueno(String cedula) {
         Map<String, Mascota> mascotasDelDueno = new HashMap<>();
     
@@ -51,6 +43,6 @@ public class MascotaServicio {
             }
         }
         return mascotasDelDueno;
-    }
+    }*/
     
 }
