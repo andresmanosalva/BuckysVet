@@ -32,11 +32,11 @@ public class LoginController {
     }
     
     @PostMapping("/login")
-    public String login(@RequestParam String cedula, Model model) {
-        Dueno dueno = duenoServicio.obtenerPorCedula(cedula);
+    public String login(@RequestParam Long id, Model model) {
+        Dueno dueno = duenoServicio.obtenerPorCedula(id);
 
         if (dueno != null) {
-            return "redirect:/mascotas/" + cedula; // Redirige a la vista con sus mascotas
+            return "redirect:/mascotas/" + id; // Redirige a la vista con sus mascotas
         } else {
             model.addAttribute("error", "Cédula incorrecta o usuario no encontrado.");
             return "login";
