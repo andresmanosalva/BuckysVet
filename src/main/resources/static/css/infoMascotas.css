@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.titulo {
+    text-align: center;
+    font-size: 28px;
+    color: #054a29;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead {
+    background-color: #057a55;
+    color: white;
+    text-align: left;
+}
+
+.table th, .table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table tbody tr:hover {
+    background-color: #e9f5db;
+}
+
+.table tbody tr td a {
+    font-weight: bold;
+    color: #057a55;
+    text-decoration: none;
+}
+
+.table tbody tr td a:hover {
+    text-decoration: underline;
+}
+
+.table tbody tr td img {
+    border: 3px solid #057a55; /* Borde verde */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 3px; /* Espaciado entre la imagen y el borde */
+    background-color: white; /* Fondo para resaltar el borde */
+    width: 100px; /* Mantener el tamaño de la imagen */
+    height: auto;
+}
+
+.btn-primary {
+    background-color: #054a29;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn-primary:hover {
+    background-color: #032d1c;
+}

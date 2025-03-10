@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Modificar Mascota</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/modificarMascota.css}">
+</head>
+<body>
+    <div class="form-container">
+        <h2> Modificar Mascota</h2>
+        <form th:object="${mascota}" th:action="@{/modificarmascota/{id}(id=${mascota.id})}" method="post">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input th:field="*{nombre}" type="text" id="nombre" placeholder="Ingrese el nombre">
+            </div>
+            <div class="form-group">
+                <label for="especie">Especie</label>
+                <input th:field="*{especie}" type="text" id="especie" placeholder="Ingrese si es gato o perro">
+            </div>
+            <div class="form-group">
+                <label for="edad">Edad</label>
+                <input th:field="*{edad}" type="text" id="edad" placeholder="Ingrese la edad">
+            </div>
+            <div class="form-group">
+                <label for="peso">Peso</label>
+                <input th:field="*{peso}" type="text" id="peso" placeholder="Ingrese el peso">
+            </div>
+            <div class="form-group">
+                <label for="enfermedad">Enfermedad</label>
+                <input th:field="*{enfermedad}" type="text" id="enfermedad" placeholder="Ingrese la enfermedad">
+            </div>
+            <div class="form-group">
+                <label for="imagenUrl">URL de la Imagen</label>
+                <input th:field="*{imagenUrl}" type="url" id="imagenUrl" placeholder="Ingrese la URL de la imagen" required>
+            </div>
+            <button type="submit">Modificar Mascota</button>
+        </form>
+    </div>
+</body>
+</html>

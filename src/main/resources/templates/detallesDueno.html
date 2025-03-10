@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información del Dueño</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Información del Dueño</h1>
+        <h2 th:text="${dueno.nombre}"></h2>
+        <p><strong>Cedula:</strong> <span th:text="${dueno.cedula}"></span></p>
+        <img th:src="${dueno.imagenUrl}" alt="Imagen del dueno" style="width: 300px;">
+        <p><strong>Correo:</strong> <span th:text="${dueno.correo}"></span></p>
+        <p><strong>Celular:</strong> <span th:text="${dueno.celular}"></span></p>
+
+    </div>
+    <a href="/duenos">Volver a la lista de dueños</a>
+</body>
+</html>

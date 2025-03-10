@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de la Mascota</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Información de la Mascota</h1>
+        <h2 th:text="${mascota.nombre}"></h2>
+        <img th:src="${mascota.imagenUrl}" alt="Imagen de la mascota" style="width: 300px;">
+        <p><strong>Especie:</strong> <span th:text="${mascota.especie}"></span></p>
+        <p><strong>Edad:</strong> <span th:text="${mascota.edad}"></span> años</p>
+        <p><strong>Peso:</strong> <span th:text="${mascota.peso}"></span> kg</p>
+        <p><strong>Enfermedad:</strong> <span th:text="${mascota.enfermedad}"></span></p>
+    </div>
+    <a href="/mascotas">Volver a la lista de mascotas</a>
+</body>
+</html>
