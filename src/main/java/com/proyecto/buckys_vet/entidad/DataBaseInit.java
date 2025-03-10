@@ -13,8 +13,10 @@ import jakarta.transaction.Transactional;
 @Controller
 @Transactional
 public class DataBaseInit implements ApplicationRunner {
+    
     @Autowired
     DuenoRepositorio duenoRepositorio;
+    @Autowired
     MascotaRepositorio mascotaRepositorio;
 
     @Override
